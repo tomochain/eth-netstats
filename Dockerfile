@@ -4,7 +4,7 @@ LABEL maintainer="etienne@tomochain.com"
 
 ENV WS_SECRET ''
 
-WORKDIR /ethnetstats
+WORKDIR /netapi
 
 COPY ./ ./
 
