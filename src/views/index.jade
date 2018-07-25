@@ -12,15 +12,15 @@ block content
             span.small-title best block
             span.big-details {{'#'}}{{ bestBlock | number}}
           div.clearfix
-      div.col-xs-2.stat-holder
-        div.big-info.uncleCount.text-info
-          div.pull-left.icon-full-width
-            i.icon-uncle
-          div.big-details-holder
-            span.small-title uncles&nbsp;
-              span.small (current / last 50)
-            span.big-details {{ bestStats.block.uncles.length }}/{{ uncleCount }}
-          div.clearfix
+      // div.col-xs-2.stat-holder
+        // div.big-info.uncleCount.text-info
+          // div.pull-left.icon-full-width
+            // i.icon-uncle
+          // div.big-details-holder
+            // span.small-title uncles&nbsp;
+              // span.small (current / last 50)
+            // span.big-details {{ bestStats.block.uncles.length }}/{{ uncleCount }}
+          // div.clearfix
       div.col-xs-2.stat-holder
         div.big-info.blocktime(class="{{ lastBlock | timeClass : true }}")
           div.pull-left.icon-full-width
@@ -38,23 +38,23 @@ block content
             span.small-title avg block time
             span.big-details {{ avgBlockTime | avgTimeFilter }}
           div.clearfix
-      div.col-xs-2.stat-holder
-        div.big-info.difficulty.text-orange
-          div.pull-left.icon-full-width
-            i.icon-hashrate
-          div.big-details-holder
-            span.small-title avg network hashrate
-            span.big-details(ng-bind-html="avgHashrate | networkHashrateFilter")
-          div.clearfix
-      div.col-xs-2.stat-holder
-        div.big-info.difficulty.text-danger
-          div.pull-left.icon-full-width
-            i.icon-difficulty
-          div.big-details-holder
-            span.small-title difficulty
-            span.big-details
-              span.small-hash {{ lastDifficulty | totalDifficultyFilter }}
-          div.clearfix
+      // div.col-xs-2.stat-holder
+        // div.big-info.difficulty.text-orange
+          // div.pull-left.icon-full-width
+            // i.icon-hashrate
+          // div.big-details-holder
+            // span.small-title avg network hashrate
+            // span.big-details(ng-bind-html="avgHashrate | networkHashrateFilter")
+          // div.clearfix
+      // div.col-xs-2.stat-holder
+        // div.big-info.difficulty.text-danger
+          // div.pull-left.icon-full-width
+            // i.icon-difficulty
+          // div.big-details-holder
+            // span.small-title difficulty
+            // span.big-details
+              // span.small-hash {{ lastDifficulty | totalDifficultyFilter }}
+          // div.clearfix
 
       div.clearfix
 
@@ -113,23 +113,23 @@ block content
                   //- span.small-value {{ blockPropagationAvg | blockPropagationFilter : '' }}
                   histogram.big-details.d3-blockpropagation(data="blockPropagationChart")
 
-              div.col-xs-3.stat-holder.xpull-right
-                div.big-info.chart.xdouble-chart
-                  span.small-title last blocks miners
-                  div.blocks-holder(ng-repeat='miner in miners track by miner.miner', data-toggle="tooltip", data-placement="right", data-original-title="{{miner.blocks}}")
-                    div.block-count(class="{{miner.blocks | minerBlocksClass : 'text-'}}") {{miner.blocks}}
-                    //- div.small-title-miner {{miner.miner | minerNameFilter : miner.name}}
-                    div.small-title-miner {{miner.miner}}
-                    minerblock(blocks="{{miner.blocks}}")
-                    div.clearfix
+              // div.col-xs-3.stat-holder.xpull-right
+                // div.big-info.chart.xdouble-chart
+                  // span.small-title last blocks miners
+                  // div.blocks-holder(ng-repeat='miner in miners track by miner.miner', data-toggle="tooltip", data-placement="right", data-original-title="{{miner.blocks}}")
+                    // div.block-count(class="{{miner.blocks | minerBlocksClass : 'text-'}}") {{miner.blocks}}
+                    // - div.small-title-miner {{miner.miner | minerNameFilter : miner.name}}
+                    // div.small-title-miner {{miner.miner}}
+                    // minerblock(blocks="{{miner.blocks}}")
+                    // div.clearfix
 
-              div.col-xs-3.stat-holder
-                div.big-info.chart.text-info
+              // div.col-xs-3.stat-holder
+                // div.big-info.chart.text-info
                   //- i.icon-uncle
-                  span.small-title uncle count&nbsp;
-                    span.small (25 blocks per bar)
+                  // span.small-title uncle count&nbsp;
+                    // span.small (25 blocks per bar)
                   //- span.small-value {{ bestStats.block.uncles.length }}/{{ uncleCount }}
-                  sparkchart.big-details.spark-uncles(data="{{uncleCountChart.join(',')}}")
+                  // sparkchart.big-details.spark-uncles(data="{{uncleCountChart.join(',')}}")
 
               div.col-xs-3.stat-holder
                 div.big-info.chart.text-info
@@ -152,18 +152,18 @@ block content
 
 
 
-          div.col-xs-4.stat-holder.map-holder
+          // div.col-xs-4.stat-holder.map-holder
             //- div.col-xs-12
-            nodemap#mapHolder(data="map")
+            // nodemap#mapHolder(data="map")
 
     div.row
       div.col-xs-12.stats-boxes
         div.row.second-row
           div.col-xs-12.stat-holder.box
-            div.active-nodes.text-warning
-              i.icon-warning-o
-              span.small-title ATTENTION!
-              span.small-value This page does not represent the entire state of the tomochain network - listing a node on this page is a voluntary process.
+          //-  div.active-nodes.text-warning
+          //-    i.icon-warning-o
+          //-    span.small-title ATTENTION!
+          //-    span.small-value This page does not represent the entire state of the tomochain network - listing a node on this page is a voluntary process.
           //- div.col-xs-12.stat-holder.box
           //-   div.active-nodes.text-danger
           //-     i.icon-hashrate
@@ -186,8 +186,8 @@ block content
               i.icon-laptop(data-toggle="tooltip", data-placement="top", title="Node type", ng-click="orderTable(['info.node'], false)")
             th.th-latency
               i.icon-clock(data-toggle="tooltip", data-placement="top", title="Node latency", ng-click="orderTable(['stats.latency'], false)")
-            th
-              i.icon-mining(data-toggle="tooltip", data-placement="top", title="Is mining", ng-click="orderTable(['-stats.hashrate'], false)")
+            // th
+              // i.icon-mining(data-toggle="tooltip", data-placement="top", title="Is mining", ng-click="orderTable(['-stats.hashrate'], false)")
             th
               i.icon-group(data-toggle="tooltip", data-placement="top", title="Peers", ng-click="orderTable(['-stats.peers'], false)")
             th
@@ -205,9 +205,9 @@ block content
               i.icon-time(data-toggle="tooltip", data-placement="top", title="Last block time", ng-click="orderTable(['-stats.block.received'], false)")
             th.th-peerPropagationTime
               i.icon-gas(data-toggle="tooltip", data-placement="top", title="Propagation time", ng-click="orderTable(['-stats.block.number', 'stats.block.propagation'], false)")
-            th.th-peerPropagationChart
-            th.th-peerPropagationAvg
-              i.icon-gas(data-toggle="tooltip", data-placement="top", title="Average propagation time", ng-click="orderTable(['stats.propagationAvg'], false)")
+            // th.th-peerPropagationChart
+            // th.th-peerPropagationAvg
+              // i.icon-gas(data-toggle="tooltip", data-placement="top", title="Average propagation time", ng-click="orderTable(['stats.propagationAvg'], false)")
             th
               i.icon-bulb(data-toggle="tooltip", data-placement="top", title="Up-time", ng-click="orderTable(['-stats.uptime'], false)")
         tbody(ng-cloak)
@@ -223,7 +223,7 @@ block content
               div.small(ng-bind-html="node.info.node | nodeVersion")
             td(class="{{ node.readable.latencyClass }}")
               span.small {{ node.readable.latency }}
-            td(class="{{ node.stats.mining | hashrateClass : node.stats.active }}", ng-bind-html="node.stats.hashrate | hashrateFilter : node.stats.mining")
+            // td(class="{{ node.stats.mining | hashrateClass : node.stats.active }}", ng-bind-html="node.stats.hashrate | hashrateFilter : node.stats.mining")
             td(class="{{ node.stats.peers | peerClass : node.stats.active }}", style="padding-left: 11px;") {{node.stats.peers}}
             td(style="padding-left: 15px;") {{node.stats.pending}}
             td(class="{{ node.stats | blockClass : bestBlock }}")
@@ -240,7 +240,7 @@ block content
             td(class="{{ node.stats | propagationTimeClass : bestBlock }}")
               div.propagationBox
               span {{node.stats.block.propagation | blockPropagationFilter}}
-            td.peerPropagationChart(class="{{node.id}}")
-              nodepropagchart(data="{{node.history.join(',')}}")
-            td(class="{{ node.stats | propagationNodeAvgTimeClass : bestBlock }}") {{ node.stats | blockPropagationAvgFilter : bestBlock }}
+            // td.peerPropagationChart(class="{{node.id}}")
+              // nodepropagchart(data="{{node.history.join(',')}}")
+            // td(class="{{ node.stats | propagationNodeAvgTimeClass : bestBlock }}") {{ node.stats | blockPropagationAvgFilter : bestBlock }}
             td(class="{{ node.stats.uptime | upTimeClass : node.stats.active }}") {{ node.stats.uptime | upTimeFilter }}
