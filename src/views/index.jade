@@ -35,8 +35,8 @@ block content
           div.pull-left.icon-full-width
             i.icon-gas
           div.big-details-holder
-            span.small-title avg block time
-            span.big-details {{ avgBlockTime | avgTimeFilter }}
+            span.small-title block time
+            span.big-details {{ '2' | avgTimeFilter }}
           div.clearfix
       // div.col-xs-2.stat-holder
         // div.big-info.difficulty.text-orange
@@ -195,8 +195,8 @@ block content
             th
               i.icon-block(data-toggle="tooltip", data-placement="top", title="Last block", ng-click="orderTable(['-stats.block.number', 'stats.block.propagation'], false)")
             th.th-blockhash &nbsp;
-            th.th-blockhash
-              i.icon-difficulty(data-toggle="tooltip", data-placement="top", title="Total difficulty", ng-click="orderTable(['-stats.block.totalDifficulty'], false)")
+            // th.th-blockhash
+            //  i.icon-difficulty(data-toggle="tooltip", data-placement="top", title="Total difficulty", ng-click="orderTable(['-stats.block.totalDifficulty'], false)")
             th
               i.icon-check-o(data-toggle="tooltip", data-placement="top", title="Block transactions", ng-click="orderTable(['-stats.block.transactions.length'], false)")
             th
