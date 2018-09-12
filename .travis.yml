@@ -1,6 +1,44 @@
+sudo: required
 language: node_js
-node_js:
-  - "0.12"
-env:
-  global:
-    secure: Qdkmi13nqcXskABBhbuGZmRakh4orOW1dalkSCyUbzGuYf0OdYF8ttNVuJa0WSWI4KhNXhtz2p3I8dM95wL++LCVqXFmIvZtX8Nca36KlNxIPNXPjn0odayh+c4pgrhrbz8TDmDXl9IPuZmNz8HHtN7xmIn6YDcm13wA3gTmfwo=
+node_js: "8"
+
+script: skip
+
+jobs:
+  include:
+    - stage: Tests
+      script: echo "No tests at the moment"
+
+    - stage: Build latest netstats image and push it
+      services:
+        - docker
+      install: skip
+      before_script:
+        - docker build -t tomochain/netstats -f Dockerfile .
+      script:
+        - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+        - docker tag tomochain/netstats tomochain/netstats:latest
+        - docker push tomochain/netstats:latest
+        - docker tag tomochain/netstats tomochain/netstats:$TRAVIS_BUILD_ID
+        - docker push tomochain/netstats:$TRAVIS_BUILD_ID
+
+    - stage: Build tagged netstats image and push it
+      services:
+        - docker
+      install: skip
+      before_script:
+        - docker build -t tomochain/netstats -f Dockerfile.server .
+      script:
+        - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+        - docker tag tomochain/netstats tomochain/netstats:latest
+        - docker push tomochain/netstats:latest
+        - docker tag tomochain/netstats tomochain/netstats:$TRAVIS_TAG
+        - docker push tomochain/netstats:$TRAVIS_TAG
+
+stages:
+  - name: Lint
+  - name: Tests
+  - name: Build latest netstats image and push it
+    if: type != pull_request AND branch = master AND tag IS blank AND repo = tomochain/netstats
+  - name: Build tagged netstats image and push it
+    if: type != pull_request AND branch = master AND tag = true AND repo = tomochain/netstats
