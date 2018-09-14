@@ -12,4 +12,6 @@ RUN npm install && \
     npm install -g grunt-cli && \
     grunt
 
-ENTRYPOINT ["npm", "start"]
+ENTRYPOINT ["npm"]
+
+CMD ["start"]
