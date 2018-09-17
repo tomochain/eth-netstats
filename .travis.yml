@@ -9,7 +9,7 @@ jobs:
     - stage: Tests
       script: echo "No tests at the moment"
 
-    - stage: Build latest netstats image and push it
+    - stage: Build and push image
       services:
         - docker
       install: skip
@@ -22,7 +22,7 @@ jobs:
         - docker tag tomochain/netstats tomochain/netstats:$TRAVIS_BUILD_ID
         - docker push tomochain/netstats:$TRAVIS_BUILD_ID
 
-    - stage: Build tagged netstats image and push it
+    - stage: Build and push image (tagged)
       services:
         - docker
       install: skip
@@ -32,13 +32,15 @@ jobs:
         - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
         - docker tag tomochain/netstats tomochain/netstats:latest
         - docker push tomochain/netstats:latest
+        - docker tag tomochain/netstats tomochain/netstats:testnet
+        - docker push tomochain/netstats:testnet
         - docker tag tomochain/netstats tomochain/netstats:$TRAVIS_TAG
         - docker push tomochain/netstats:$TRAVIS_TAG
 
 stages:
   - name: Lint
   - name: Tests
-  - name: Build latest netstats image and push it
+  - name: Build and push image
     if: type != pull_request AND branch = master AND tag IS blank AND repo = tomochain/netstats
-  - name: Build tagged netstats image and push it
+  - name: Build and push image (tagged)
     if: type != pull_request AND branch = master AND tag = true AND repo = tomochain/netstats
