@@ -14,7 +14,7 @@ jobs:
         - docker
       install: skip
       before_script:
-        - docker build -t tomochain/netstats -f Dockerfile .
+        - docker build -t tomochain/netstats .
       script:
         - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
         - docker tag tomochain/netstats tomochain/netstats:latest
@@ -27,7 +27,7 @@ jobs:
         - docker
       install: skip
       before_script:
-        - docker build -t tomochain/netstats -f Dockerfile.server .
+        - docker build -t tomochain/netstats .
       script:
         - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
         - docker tag tomochain/netstats tomochain/netstats:latest
