@@ -5,5 +5,5 @@ Fork of [cubedro/eth-netstats](https://github.com/cubedro/eth-netstats) used to 
 
 ## Usage
 ```
-docker run -e "WS_SECRET=$SECRET" -p "3000:3000" tomochain/eth-netstats
+docker run -e "WS_SECRET=$SECRET" -p "3000:3000"  tomochain/netstats 
 ```
